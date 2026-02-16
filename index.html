@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>תפריט החתונה | סער ואיתי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #D4AF37;
+      --gold-light: #F0D878;
+      --maroon: #800020;
+      --deep-red: #C41E3A;
+      --ivory: #FFFFF0;
+      --cream: #FFF8E7;
+      --dark-bg: #1a0a0a;
+      --purple-deep: #2D0A2E;
+    }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: linear-gradient(135deg, var(--dark-bg) 0%, var(--maroon) 50%, var(--purple-deep) 100%);
+      color: var(--ivory);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+    }
+
+    .menu-card {
+      max-width: 500px;
+      width: 100%;
+      background: linear-gradient(180deg, rgba(45,10,46,0.95) 0%, rgba(128,0,32,0.9) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 40px 30px;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 0 30px rgba(212,175,55,0.3),
+        inset 0 0 60px rgba(212,175,55,0.05);
+    }
+
+    /* Mandala corner decorations */
+    .menu-card::before,
+    .menu-card::after {
+      content: '';
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    .menu-card::before {
+      top: -50px;
+      right: -50px;
+      box-shadow:
+        0 0 0 15px transparent,
+        0 0 0 17px var(--gold),
+        0 0 0 30px transparent,
+        0 0 0 32px var(--gold);
+    }
+
+    .menu-card::after {
+      bottom: -50px;
+      left: -50px;
+      box-shadow:
+        0 0 0 15px transparent,
+        0 0 0 17px var(--gold),
+        0 0 0 30px transparent,
+        0 0 0 32px var(--gold);
+    }
+
+    /* Ornate top border */
+    .ornate-border {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 28px;
+      color: var(--gold);
+      letter-spacing: 8px;
+      opacity: 0.8;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .couple-names {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-shadow: 0 2px 10px rgba(212,175,55,0.4);
+      margin-bottom: 5px;
+      letter-spacing: 4px;
+    }
+
+    .ampersand {
+      font-size: 2rem;
+      color: var(--gold-light);
+      margin: 0 8px;
+      opacity: 0.8;
+    }
+
+    .welcome-msg {
+      font-family: 'Heebo', sans-serif;
+      font-weight: 300;
+      font-size: 1.1rem;
+      color: var(--cream);
+      margin-top: 12px;
+      line-height: 1.8;
+    }
+
+    .event-details {
+      font-size: 0.95rem;
+      color: var(--gold-light);
+      margin-top: 8px;
+      font-weight: 300;
+    }
+
+    .event-details span {
+      margin: 0 6px;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 25px 0;
+      gap: 12px;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .divider-diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* Mandala divider */
+    .mandala-divider {
+      text-align: center;
+      color: var(--gold);
+      font-size: 20px;
+      letter-spacing: 6px;
+      opacity: 0.6;
+      margin: 5px 0;
+    }
+
+    /* Menu sections */
+    .menu-section {
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Frank Ruhl Libre', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 14px;
+      text-shadow: 0 1px 6px rgba(212,175,55,0.3);
+    }
+
+    .menu-items {
+      list-style: none;
+      text-align: center;
+    }
+
+    .menu-items li {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: var(--cream);
+      padding: 6px 0;
+      line-height: 1.6;
+      position: relative;
+    }
+
+    .menu-items li::before {
+      content: '✦';
+      color: var(--gold);
+      margin-left: 8px;
+      font-size: 0.7rem;
+      vertical-align: middle;
+      opacity: 0.7;
+    }
+
+    .item-note {
+      font-size: 0.85rem;
+      color: var(--gold-light);
+      opacity: 0.8;
+    }
+
+    /* Vegan note */
+    .vegan-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      font-weight: 300;
+      margin-top: 20px;
+      padding: 12px 20px;
+      border: 1px solid rgba(212,175,55,0.3);
+      border-radius: 10px;
+      background: rgba(212,175,55,0.05);
+      position: relative;
+      z-index: 1;
+    }
+
+    .vegan-note .emoji {
+      font-size: 1.2rem;
+    }
+
+    /* Footer ornament */
+    .footer-ornament {
+      text-align: center;
+      margin-top: 25px;
+      color: var(--gold);
+      font-size: 24px;
+      letter-spacing: 10px;
+      opacity: 0.5;
+    }
+
+    /* Paisley-inspired floating shapes */
+    .paisley {
+      position: absolute;
+      opacity: 0.06;
+      color: var(--gold);
+      font-size: 80px;
+      z-index: 0;
+    }
+
+    .paisley-1 {
+      top: 20%;
+      left: 5%;
+      transform: rotate(30deg);
+    }
+
+    .paisley-2 {
+      top: 60%;
+      right: 5%;
+      transform: rotate(-20deg);
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
+      .menu-card {
+        padding: 30px 20px;
+      }
+
+      .couple-names {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+
+      .menu-items li {
+        font-size: 0.95rem;
+      }
+    }
+
+    /* Print-friendly */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+
+      .menu-card {
+        border-color: #333;
+        box-shadow: none;
+        background: white;
+      }
+
+      .couple-names,
+      .section-title,
+      .divider-diamond,
+      .ornate-border,
+      .footer-ornament {
+        color: #333;
+      }
+
+      .menu-items li,
+      .welcome-msg {
+        color: #222;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="menu-card">
+    <!-- Decorative paisley shapes -->
+    <div class="paisley paisley-1">❧</div>
+    <div class="paisley paisley-2">❧</div>
+
+    <!-- Top ornament -->
+    <div class="ornate-border">❈ ✦ ❈</div>
+
+    <!-- Header -->
+    <div class="header">
+      <div class="couple-names">
+        סער <span class="ampersand">&</span> איתי
+      </div>
+      <div class="welcome-msg">
+        מזמינים אתכם לחגוג איתנו ולהינות מהתפריט שהכנו עבורכם באהבה
+      </div>
+      <div class="event-details">
+        <span>17.02.2026</span>
+        <span>·</span>
+        <span>דרזנר 5</span>
+      </div>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Salads -->
+    <div class="menu-section">
+      <h2 class="section-title">סלטים במרכז השולחן</h2>
+      <ul class="menu-items">
+        <li>אצבעות חצילים קלויים בשום שבור ולימון</li>
+        <li>כרוב אסיאתי</li>
+        <li>תערובת גן</li>
+        <li>בטטה אפויה</li>
+        <li>סלט עלים עונתי</li>
+      </ul>
+    </div>
+
+    <div class="mandala-divider">· · ✦ · ·</div>
+
+    <!-- Intermediate Course -->
+    <div class="menu-section">
+      <h2 class="section-title">מנת ביניים</h2>
+      <ul class="menu-items">
+        <li>פילה לברק בעשבי תיבול ירוקים</li>
+        <li>מאפה אסאדו</li>
+      </ul>
+    </div>
+
+    <div class="mandala-divider">· · ✦ · ·</div>
+
+    <!-- Main Course -->
+    <div class="menu-section">
+      <h2 class="section-title">מנה עיקרית</h2>
+      <ul class="menu-items">
+        <li>פרגית במרינדה עשבי תיבול ולימון</li>
+        <li>אצבעות אנטרקוט <span class="item-note">(בתוספת קרם תפוחי אדמה)</span></li>
+      </ul>
+    </div>
+
+    <div class="mandala-divider">· · ✦ · ·</div>
+
+    <!-- Dessert -->
+    <div class="menu-section">
+      <h2 class="section-title">פלטת קינוחים למרכז השולחן</h2>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-diamond"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Vegan note -->
+    <div class="vegan-note">
+      <span class="emoji">🌿</span>
+      לאלו שצריכים מנה טבעונית — אנא פנו למלצר
+      <span class="emoji">🌿</span>
+    </div>
+
+    <!-- Footer ornament -->
+    <div class="footer-ornament">❈ ✦ ❈</div>
+  </div>
+
+</body>
+</html>
